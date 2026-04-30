@@ -6,14 +6,14 @@ const education = [
     year: 'Secondary School',
     degree: 'Software Development',
     institution: 'Secondary Education',
-    desc: 'In secondary I learnt software development, where I first discovered my passion for coding and built my foundational knowledge.',
+    desc: 'During secondary school, I studied software development. This is where I first discovered my passion for coding and built my foundational programming knowledge.',
     icon: GraduationCap,
   },
   {
     year: 'Present',
     degree: 'Information Technology',
     institution: 'University',
-    desc: 'I am currently learning at university in IT Information Technology, expanding my technical expertise in modern systems and architectures.',
+    desc: 'I am currently pursuing a degree in Information Technology, expanding my technical expertise in modern software systems and architectures.',
     icon: GraduationCap,
   },
 ]

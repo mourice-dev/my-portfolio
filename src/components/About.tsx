@@ -23,28 +23,37 @@ export default function About() {
   }, [])
 
   return (
-    <section id="about" className="bg-white">
-      {/* Header Area with Background */}
-      <div className="relative py-24 overflow-hidden border-b border-black/5">
+    <>
+      {/* Home Area with Background */}
+      <section id="home" className="relative py-32 overflow-hidden border-b border-black/5 bg-white">
         <ParticleBackground />
         
         <div className="relative z-10 max-w-[1200px] mx-auto px-5">
           <div className="text-center">
-            <p className="text-[16px] font-bold tracking-[0.15em] uppercase text-[#86868b] mb-3">About Me</p>
-            <h2 className="text-[28px] lg:text-[36px] font-medium text-[#1a1a1c] tracking-tight mb-3.5">
-              Crafting Digital Experiences
+            <h2 
+              className="text-[32px] md:text-[40px] lg:text-[48px] font-medium text-[#1a1a1c] tracking-tight mb-4 animate-fade-in-up" 
+              style={{ animationDelay: '300ms', animationFillMode: 'both' }}
+            >
+              Hi, I’m Nshuti Maurice
             </h2>
-            <p className="text-[19px] text-[#6e6e73] max-w-[580px] mx-auto leading-relaxed">
-              I'm a passionate software developer with over 8 years of experience turning
-              ideas into elegant, functional digital products.
+            <p 
+              className="text-[19px] md:text-[21px] text-[#6e6e73] max-w-[640px] mx-auto leading-relaxed animate-fade-in-up"
+              style={{ animationDelay: '600ms', animationFillMode: 'both' }}
+            >
+              I'm a passionate software developer turning ideas into elegant, functional digital products.
             </p>
           </div>
         </div>
-      </div>
+      </section>
 
-      {/* Main Content Area without Background */}
-      <div className="max-w-[1200px] mx-auto px-5 py-16">
-        {/* Main grid */}
+      {/* About Content Area without Background */}
+      <section id="about" className="bg-white">
+        <div className="max-w-[1200px] mx-auto px-5 py-24">
+          <div className="text-center mb-16">
+            <p className="text-[16px] font-bold tracking-[0.15em] uppercase text-[#86868b]">About Me</p>
+          </div>
+
+          {/* Main grid */}
         <div className="grid lg:grid-cols-2 gap-12 items-start">
           {/* Left — Story */}
           <div ref={ref} className={`transition-all duration-[1200ms] ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-8'}`}>
@@ -79,7 +88,8 @@ export default function About() {
             </ul>
           </div>
         </div>
-      </div>
-    </section>
+        </div>
+      </section>
+    </>
   )
 }

@@ -1,6 +1,5 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import AntigravityNavbar from './components/AntigravityNavbar'
-import AntigravityHero from './components/AntigravityHero'
 import About from './components/About'
 import Portfolio from './components/Portfolio'
 import TechStack from './components/TechStack'
@@ -12,7 +11,6 @@ import Footer from './components/Footer'
 function HomePage() {
   return (
     <>
-      <AntigravityHero />
       <About />
       <Education />
       <TechStack />
