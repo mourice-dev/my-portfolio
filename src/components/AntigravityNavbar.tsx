@@ -1,17 +1,32 @@
-import { useState } from 'react';
+import { useState, useCallback } from 'react';
 import { Menu, X, Terminal } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 
 const navLinks = [
   { label: 'Home', to: '/' },
-  { label: 'About', href: '/#about' },
-  { label: 'Work', to: '/work' },
-  { label: 'Contact', href: '/#contact' },
+  { label: 'About', hash: '#about' },
+  { label: 'Work', hash: '#portfolio' },
+  { label: 'Contact', hash: '#contact' },
   { label: 'Blog', to: '/blog' },
 ];
 
 export default function AntigravityNavbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  /** Navigate to hash — if already on home, scroll directly; otherwise navigate then scroll */
+  const goToHash = useCallback((hash: string) => {
+    setMobileOpen(false);
+    if (location.pathname === '/') {
+      // Already on home — just scroll
+      const el = document.querySelector(hash);
+      if (el) el.scrollIntoView({ behavior: 'smooth' });
+    } else {
+      // Navigate to home with hash — ScrollToHash in App.tsx handles the scroll
+      navigate('/' + hash);
+    }
+  }, [location.pathname, navigate]);
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-100">
@@ -33,9 +48,13 @@ export default function AntigravityNavbar() {
                   {link.label}
                 </Link>
               ) : (
-                <a key={link.label} href={link.href} className="hover:text-gray-900 transition-colors">
+                <button
+                  key={link.label}
+                  onClick={() => goToHash(link.hash!)}
+                  className="hover:text-gray-900 transition-colors"
+                >
                   {link.label}
-                </a>
+                </button>
               )
             )}
           </div>
@@ -43,12 +62,12 @@ export default function AntigravityNavbar() {
 
         {/* Right Actions */}
         <div className="flex items-center gap-3">
-          <a
-            href="/#contact"
+          <button
+            onClick={() => goToHash('#contact')}
             className="hidden md:flex items-center gap-2 bg-[#1a1a1c] text-white px-4 py-2 rounded-full text-sm font-medium hover:bg-black transition-colors shadow-sm"
           >
             Let's Talk
-          </a>
+          </button>
 
           {/* Mobile hamburger */}
           <button
@@ -77,23 +96,21 @@ export default function AntigravityNavbar() {
                   {link.label}
                 </Link>
               ) : (
-                <a
+                <button
                   key={link.label}
-                  href={link.href}
-                  onClick={() => setMobileOpen(false)}
+                  onClick={() => goToHash(link.hash!)}
                   className="text-left py-3 text-[16px] font-medium border-b border-black/5 last:border-0 text-[#6e6e73] hover:text-[#1d1d1f] transition-colors"
                 >
                   {link.label}
-                </a>
+                </button>
               )
             )}
-            <a
-              href="/#contact"
-              onClick={() => setMobileOpen(false)}
+            <button
+              onClick={() => goToHash('#contact')}
               className="mt-3 text-center py-3 bg-[#1d1d1f] text-white text-[15px] font-semibold rounded-full hover:bg-black transition-colors"
             >
               Let's Talk
-            </a>
+            </button>
           </nav>
         </div>
       )}
