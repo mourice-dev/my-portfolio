@@ -75,7 +75,11 @@ const techStack = [
   },
   {
     name: 'Oracle',
-    logo: <img src="https://cdn.simpleicons.org/oracle/1d1d1f" width="24" height="24" alt="Oracle" />
+    logo: (
+      <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
+        <path d="M7.076 7.076C3.162 7.076 0 10.239 0 14.15c0 3.913 3.162 7.076 7.076 7.076h9.849c3.912 0 7.075-3.163 7.075-7.076 0-3.912-3.163-7.075-7.075-7.075H7.076zm9.927 11.479H7.076a4.404 4.404 0 010-8.808h9.927a4.404 4.404 0 010 8.808z"/>
+      </svg>
+    )
   },
   {
     name: 'Git',
@@ -91,7 +95,11 @@ const techStack = [
   },
   {
     name: 'VS Code',
-    logo: <img src="https://cdn.simpleicons.org/visualstudiocode/1d1d1f" width="24" height="24" alt="VS Code" />
+    logo: (
+      <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
+        <path d="M17.583.063a1.5 1.5 0 00-1.032.392l-7.9 7.208L4.15 4.356a1 1 0 00-1.3.074l-1.5 1.373a1 1 0 00-.013 1.44L5.59 12l-4.253 4.757a1 1 0 00.013 1.44l1.5 1.373a1 1 0 001.3.074l4.5-3.307 7.9 7.208a1.5 1.5 0 002.38-1.21V1.274A1.5 1.5 0 0017.583.063zM17.5 18.56l-6.402-5.56 6.402-5.56z"/>
+      </svg>
+    )
   },
   {
     name: 'Vite',

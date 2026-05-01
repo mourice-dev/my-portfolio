@@ -1,13 +1,11 @@
 import { useEffect, useRef, useState } from 'react'
-import { Download, Code2, Palette, Database, Globe, Smartphone } from 'lucide-react'
+import ParticleBackground from './ParticleBackground'
 
 const languages = [
   'JavaScript', 'TypeScript', 'HTML5', 'CSS', 'Tailwind CSS',
   'PHP', 'Java', 'C#', 'C++', 'C', 'SQL', 'MySQL', 'Oracle',
   'Bash', 'React', 'Express', 'Node.js'
 ]
-
-import ParticleBackground from './ParticleBackground'
 
 export default function About() {
   const ref = useRef<HTMLDivElement>(null)
@@ -34,7 +32,7 @@ export default function About() {
               className="text-[32px] md:text-[40px] lg:text-[48px] font-medium text-[#1a1a1c] tracking-tight mb-4 animate-fade-in-up" 
               style={{ animationDelay: '300ms', animationFillMode: 'both' }}
             >
-              Hi, I’m Nshuti Maurice
+              Hi, I'm Nshuti Maurice
             </h2>
             <p 
               className="text-[19px] md:text-[21px] text-[#6e6e73] max-w-[640px] mx-auto leading-relaxed animate-fade-in-up"
@@ -60,8 +58,8 @@ export default function About() {
             <h3 className="text-[22px] font-bold text-[#1d1d1f] mb-3.5">The Story</h3>
             <p className="text-[18px] text-[#6e6e73] leading-relaxed mb-3.5">
               My journey into software development started with a deep curiosity about how things work under the hood.
-              What began as tinkering with HTML on a family computer eventually evolved into a full-fledged career
-              building products used by thousands of people daily.
+              What began as tinkering with HTML eventually evolved into a growing career
+              building real-world applications and learning new technologies every day.
             </p>
             <p className="text-[18px] text-[#6e6e73] leading-relaxed mb-7">
               I believe great software is born at the intersection of technical excellence and human empathy.

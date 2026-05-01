@@ -1,19 +1,26 @@
 import { useEffect, useRef, useState } from 'react'
-import { GraduationCap, Briefcase } from 'lucide-react'
+import { GraduationCap } from 'lucide-react'
+import WaveBackground from './WaveBackground'
+
+/* ──────────────────────────────────────────────
+   TODO: Replace the placeholder school/university
+   names below with your REAL institution names,
+   degree titles, and date ranges.
+   ────────────────────────────────────────────── */
 
 const education = [
   {
-    year: 'Secondary School',
+    year: '2019 – 2022',
     degree: 'Software Development',
-    institution: 'Secondary Education',
-    desc: 'During secondary school, I studied software development. This is where I first discovered my passion for coding and built my foundational programming knowledge.',
+    institution: 'Secondary School',
+    desc: 'Studied software development fundamentals including programming, databases, and web technologies. This is where I first discovered my passion for coding and built my foundational programming knowledge.',
     icon: GraduationCap,
   },
   {
-    year: 'Present',
-    degree: 'Information Technology',
+    year: '2023 – Present',
+    degree: 'Bachelor of Information Technology',
     institution: 'University',
-    desc: 'I am currently pursuing a degree in Information Technology, expanding my technical expertise in modern software systems and architectures.',
+    desc: 'Currently pursuing a degree in Information Technology, deepening my expertise in software engineering, data structures, algorithms, and modern application development.',
     icon: GraduationCap,
   },
 ]
@@ -45,8 +52,6 @@ function TimelineItem({ year, title, subtitle, desc, icon: Icon, isVisible, dela
     </div>
   )
 }
-
-import WaveBackground from './WaveBackground'
 
 export default function Education() {
   const ref = useRef<HTMLDivElement>(null)

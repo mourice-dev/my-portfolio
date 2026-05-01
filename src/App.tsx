@@ -44,7 +44,6 @@ export default function App() {
   return (
     <BrowserRouter>
       <div className="min-h-screen bg-white font-sans text-gray-900 flex flex-col relative">
-        <title>Maurice Nshuti | Software Developer</title>
         <AntigravityNavbar />
         <main className="flex-1 relative z-10">
           <Routes>

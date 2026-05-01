@@ -1,4 +1,5 @@
 import { MapPin, Phone, Mail, ArrowUp } from 'lucide-react'
+import { Link } from 'react-router-dom'
 
 const TwitterIcon = () => (
   <svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor">
@@ -21,22 +22,21 @@ const LinkedinIcon = () => (
   </svg>
 )
 
-const footerLinks = {
-  Links: [
-    { label: 'Home', href: '#home' },
-    { label: 'About', href: '#about' },
-    { label: 'Services', href: '#services' },
-    { label: 'Portfolio', href: '#portfolio' },
-    { label: 'Contact', href: '#contact' },
-  ],
-  Services: [
-    { label: 'Web Design', href: '#' },
-    { label: 'Web Development', href: '#' },
-    { label: 'Business Strategy', href: '#' },
-    { label: 'Data Analysis', href: '#' },
-    { label: 'Graphic Design', href: '#' },
-  ],
-}
+const footerLinks = [
+  { label: 'Home', to: '/' },
+  { label: 'About', href: '/#about' },
+  { label: 'Work', to: '/work' },
+  { label: 'Blog', to: '/blog' },
+  { label: 'Contact', href: '/#contact' },
+]
+
+const skills = [
+  'React & TypeScript',
+  'Node.js & Express',
+  'UI/UX Design',
+  'Database Design',
+  'REST APIs',
+]
 
 const socials = [
   { icon: TwitterIcon, href: 'https://x.com/Nshuti_Kope', label: 'Twitter' },
@@ -56,15 +56,17 @@ export default function Footer() {
           {/* About */}
           <div>
             <h4 className="text-[18px] font-bold mb-3.5">About</h4>
-            <p className="text-[17px] text-white/50 leading-relaxed mb-5">
+            <p className="text-[15px] text-white/50 leading-relaxed mb-5">
               Software developer passionate about building beautiful, performant digital experiences
-              that make a difference in people's lives.
+              and continuously learning new technologies.
             </p>
             <div className="flex gap-3">
               {socials.map(({ icon: Icon, href, label }) => (
                 <a
                   key={label}
                   href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   aria-label={label}
                   className="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center text-white/60 hover:bg-white/20 hover:text-white transition-all"
                 >
@@ -78,34 +80,38 @@ export default function Footer() {
           <div>
             <h4 className="text-[18px] font-bold mb-3.5">Links</h4>
             <ul className="space-y-3">
-              {footerLinks.Links.map((link) => (
+              {footerLinks.map((link) => (
                 <li key={link.label}>
-                  <a
-                    href={link.href}
-                    onClick={(e) => { e.preventDefault(); document.querySelector(link.href)?.scrollIntoView({ behavior: 'smooth' }) }}
-                    className="text-[17px] text-white/50 hover:text-white transition-colors flex items-center gap-2 group"
-                  >
-                    <span className="group-hover:translate-x-1 transition-transform">→</span>
-                    {link.label}
-                  </a>
+                  {link.to ? (
+                    <Link
+                      to={link.to}
+                      className="text-[15px] text-white/50 hover:text-white transition-colors flex items-center gap-2 group"
+                    >
+                      <span className="group-hover:translate-x-1 transition-transform">→</span>
+                      {link.label}
+                    </Link>
+                  ) : (
+                    <a
+                      href={link.href}
+                      className="text-[15px] text-white/50 hover:text-white transition-colors flex items-center gap-2 group"
+                    >
+                      <span className="group-hover:translate-x-1 transition-transform">→</span>
+                      {link.label}
+                    </a>
+                  )}
                 </li>
               ))}
             </ul>
           </div>
 
-          {/* Services */}
+          {/* Skills */}
           <div>
-            <h4 className="text-[18px] font-bold mb-3.5">Services</h4>
+            <h4 className="text-[18px] font-bold mb-3.5">Skills</h4>
             <ul className="space-y-3">
-              {footerLinks.Services.map((link) => (
-                <li key={link.label}>
-                  <a
-                    href={link.href}
-                    className="text-[17px] text-white/50 hover:text-white transition-colors flex items-center gap-2 group"
-                  >
-                    <span className="group-hover:translate-x-1 transition-transform">→</span>
-                    {link.label}
-                  </a>
+              {skills.map((skill) => (
+                <li key={skill} className="text-[15px] text-white/50 flex items-center gap-2">
+                  <span>→</span>
+                  {skill}
                 </li>
               ))}
             </ul>
@@ -113,17 +119,17 @@ export default function Footer() {
 
           {/* Contact info */}
           <div>
-            <h4 className="text-[18px] font-bold mb-3.5">Have a Questions?</h4>
+            <h4 className="text-[18px] font-bold mb-3.5">Have a Question?</h4>
             <ul className="space-y-4">
-              <li className="flex gap-3 text-[17px] text-white/50">
+              <li className="flex gap-3 text-[15px] text-white/50">
                 <MapPin size={16} className="shrink-0 mt-0.5 text-white/30" />
                 <span>Rwanda, Kigali</span>
               </li>
-              <li className="flex gap-3 text-[17px] text-white/50">
+              <li className="flex gap-3 text-[15px] text-white/50">
                 <Phone size={16} className="shrink-0 text-white/30" />
                 <a href="tel:+250793253301" className="hover:text-white transition-colors">+250 793 253 301</a>
               </li>
-              <li className="flex gap-3 text-[17px] text-white/50">
+              <li className="flex gap-3 text-[15px] text-white/50">
                 <Mail size={16} className="shrink-0 text-white/30" />
                 <a href="mailto:nshutikope@gmail.com" className="hover:text-white transition-colors">nshutikope@gmail.com</a>
               </li>
@@ -135,22 +141,16 @@ export default function Footer() {
       {/* Bottom bar */}
       <div className="border-t border-white/5">
         <div className="max-w-[1200px] mx-auto px-5 py-4 flex flex-col sm:flex-row items-center justify-between gap-3.5">
-          <p className="text-[17px] text-white/30 text-center">
+          <p className="text-[14px] text-white/30 text-center">
             Copyright © {new Date().getFullYear()} All rights reserved | Made with{' '}
             <span className="text-white/50">♥</span> by Maurice Nshuti
           </p>
 
-          {/* Logo center */}
-          <div className="flex items-center gap-2">
-            <span className="text-[19px] font-black text-white/80">&lt;/&gt;</span>
-            <span className="text-[17px] font-semibold text-white/40 tracking-wide">DevPortfolio</span>
-          </div>
-
           <div className="flex items-center gap-4">
-            <a href="https://x.com/Nshuti_Kope" className="text-[17px] text-white/40 hover:text-white/80 transition-colors">Twitter</a>
-            <a href="https://www.linkedin.com/in/nshuti-maurice-2b7a202a0/" className="text-[17px] text-white/40 hover:text-white/80 transition-colors">LinkedIn</a>
-            <a href="https://github.com/mourice-dev" className="text-[17px] text-white/40 hover:text-white/80 transition-colors">GitHub</a>
-            <a href="https://www.instagram.com/nshutii__/" className="text-[17px] text-white/40 hover:text-white/80 transition-colors">Instagram</a>
+            <a href="https://x.com/Nshuti_Kope" target="_blank" rel="noopener noreferrer" className="text-[14px] text-white/40 hover:text-white/80 transition-colors">Twitter</a>
+            <a href="https://www.linkedin.com/in/nshuti-maurice-2b7a202a0/" target="_blank" rel="noopener noreferrer" className="text-[14px] text-white/40 hover:text-white/80 transition-colors">LinkedIn</a>
+            <a href="https://github.com/mourice-dev" target="_blank" rel="noopener noreferrer" className="text-[14px] text-white/40 hover:text-white/80 transition-colors">GitHub</a>
+            <a href="https://www.instagram.com/nshutii__/" target="_blank" rel="noopener noreferrer" className="text-[14px] text-white/40 hover:text-white/80 transition-colors">Instagram</a>
           </div>
         </div>
       </div>
