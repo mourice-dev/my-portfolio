@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom'
 import AntigravityNavbar from './components/AntigravityNavbar'
 import About from './components/About'
@@ -45,32 +45,10 @@ function HomePage() {
 }
 
 export default function App() {
-  const [isLoading, setIsLoading] = useState(true);
-  const [fadeOut, setFadeOut] = useState(false);
-
-  useEffect(() => {
-    // Show loading for a short duration, then fade out smoothly
-    const timer = setTimeout(() => {
-      setFadeOut(true);
-      setTimeout(() => setIsLoading(false), 800); // Wait for fade out animation
-    }, 1800);
-    return () => clearTimeout(timer);
-  }, []);
-
   return (
     <BrowserRouter>
-      {isLoading && (
-        <div className={`fixed inset-0 z-[1000] flex items-center justify-center bg-white transition-opacity duration-700 ease-in-out ${fadeOut ? 'opacity-0' : 'opacity-100'}`}>
-          <div className="flex flex-col items-center gap-4">
-            <span className="text-[16px] tracking-[0.4em] font-medium text-[#1d1d1f] uppercase animate-pulse">
-              Loading
-            </span>
-          </div>
-        </div>
-      )}
-      
       <ScrollToHash />
-      <div className={`min-h-screen bg-white font-sans text-gray-900 flex flex-col relative transition-opacity duration-1000 ease-in-out ${isLoading && !fadeOut ? 'opacity-0 h-screen overflow-hidden' : 'opacity-100'}`}>
+      <div className="min-h-screen bg-white font-sans text-gray-900 flex flex-col relative">
         <AntigravityNavbar />
         <main className="flex-1 relative z-10">
           <Routes>
