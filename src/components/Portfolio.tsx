@@ -117,7 +117,7 @@ export default function Portfolio() {
                   <a
                     href={project.github}
                     target="_blank"
-                    rel="noopener noreferre"
+                    rel="noopener noreferrer"
                     className="w-10 h-10 bg-white rounded-full flex items-center justify-center text-[#1d1d1f] hover:bg-[#f5f5f7] transition-colors shadow"
                     aria-label={`View ${project.title} on GitHub`}
                   >
