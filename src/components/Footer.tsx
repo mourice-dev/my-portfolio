@@ -141,8 +141,7 @@ export default function Footer() {
       <div className="border-t border-white/5">
         <div className="max-w-[1200px] mx-auto px-5 py-4 flex flex-col sm:flex-row items-center justify-between gap-3.5">
           <p className="text-[14px] text-white/30 text-center">
-            Copyright © {new Date().getFullYear()} All rights reserved | Made with{' '}
-            <span className="text-white/50">♥</span> by Maurice Nshuti
+            Made by Maurice Nshuti
           </p>
 
           <div className="flex items-center gap-4">

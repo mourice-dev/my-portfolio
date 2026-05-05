@@ -25,28 +25,6 @@ const projects = [
     github: 'https://github.com/mourice-dev',
     live: 'https://resume-generetor-react-d7ckg4htl-nshutikope-2194s-projects.vercel.app/',
   },
-  {
-    id: 2,
-    title: 'E-Commerce Platform',
-    category: 'Web App',
-    tags: ['React', 'Node.js', 'API Integration'],
-    desc: 'A full-featured e-commerce platform with product listings, shopping cart functionality, and seamless user experience.',
-    color: '#d1d1d6',
-    emoji: '🛒',
-    github: 'https://github.com/mourice-dev',
-    live: '#',
-  },
-  {
-    id: 3,
-    title: 'MedicTracker',
-    category: 'Web App',
-    tags: ['React', 'HealthTech'],
-    desc: 'A medical tracking application designed to help users keep log of their medical history, appointments, and prescriptions efficiently.',
-    color: '#c7c7cc',
-    emoji: '⚕️',
-    github: 'https://github.com/mourice-dev',
-    live: '#',
-  },
 ]
 
 export default function Portfolio() {
