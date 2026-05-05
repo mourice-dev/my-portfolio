@@ -70,7 +70,7 @@ export default function Portfolio() {
         {/* Header */}
         <div className="text-center mb-10">
           <p className="text-[14px] font-bold tracking-[0.15em] uppercase text-[#86868b] mb-3">My Work</p>
-          <h2 className="text-[24px] lg:text-[28px] font-medium text-[#1a1a1c] tracking-tight mb-3.5">Portfolio</h2>
+          <h2 className="text-[24px] lg:text-[28px] font-medium text-[#1a1a1c] tracking-tight mb-3.5">Projects</h2>
           <p className="text-[17px] text-[#6e6e73] max-w-[480px] mx-auto leading-relaxed">
             Projects I've built while learning and growing as a developer.
           </p>
