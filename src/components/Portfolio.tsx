@@ -1,6 +1,8 @@
 import { useState, useRef, useEffect } from 'react'
 import { ExternalLink } from 'lucide-react'
 import OrbitBackground from './OrbitBackground'
+import resumeImg from '../images/resume.png'
+import ecommerceImg from '../images/ecommerce-orangeshop.png'
 
 const GithubIcon = () => (
   <svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor">
@@ -22,8 +24,21 @@ const projects = [
     desc: 'An interactive web application that allows users to easily generate professional resumes with a clean, user-friendly interface.',
     color: '#e8e8ed',
     emoji: '📄',
+    image: resumeImg,
     github: 'https://github.com/mourice-dev',
     live: 'https://resume-generetor-react-d7ckg4htl-nshutikope-2194s-projects.vercel.app/',
+  },
+  {
+    id: 2,
+    title: 'Express Ecommerce',
+    category: 'Web App',
+    tags: ['React', 'Express', 'Node.js'],
+    desc: 'A full-stack e-commerce application featuring a seamless shopping experience, product management, and secure user authentication.',
+    color: '#fff',
+    emoji: '🛒',
+    image: ecommerceImg,
+    github: 'https://github.com/mourice-dev',
+    live: 'https://express-ecommerce-idj10f9gj-nshutikope-2194s-projects.vercel.app',
   },
 ]
 
@@ -76,9 +91,17 @@ export default function Portfolio() {
                 className="relative h-52 flex items-center justify-center overflow-hidden"
                 style={{ backgroundColor: project.color }}
               >
-                <span className="text-4xl transform group-hover:scale-110 transition-transform duration-300">
-                  {project.emoji}
-                </span>
+                {project.image ? (
+                  <img 
+                    src={project.image} 
+                    alt={project.title} 
+                    className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500" 
+                  />
+                ) : (
+                  <span className="text-4xl transform group-hover:scale-110 transition-transform duration-300">
+                    {project.emoji}
+                  </span>
+                )}
                 {/* Overlay */}
                 <div className="portfolio-overlay absolute inset-0 bg-black/60 opacity-0 transition-opacity duration-300 flex items-center justify-center gap-3.5">
                   {project.live !== '#' && (
