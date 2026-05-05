@@ -7,7 +7,6 @@ const navLinks = [
   { label: 'About', hash: '#about' },
   { label: 'Work', hash: '#portfolio' },
   { label: 'Contact', hash: '#contact' },
-  { label: 'Blog', to: '/blog' },
 ];
 
 export default function AntigravityNavbar() {
