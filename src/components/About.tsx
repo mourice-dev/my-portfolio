@@ -67,22 +67,19 @@ export default function About() {
   return (
     <>
       {/* Home Area with Background */}
-      <section id="home" className="relative pt-40 pb-32 overflow-hidden bg-white">
-        <ParticleBackground />
+      import { useEffect, useRef, useState } from 'react'
+import AntigravityParticleBackground from './AntigravityParticleBackground'
+
+const languages = [
+  'JavaScript', 'TypeScript', 'HTML5', 'CSS', 'Tailwind CSS',
+// ... existing code ...
+  return (
+    <>
+      {/* Home Area with Background */}
+      <section id="home" className="relative pt-28 pb-24 overflow-hidden bg-white">
+        <AntigravityParticleBackground />
         
         <div className="relative z-10 max-w-[1000px] mx-auto px-5 text-center flex flex-col items-center">
-          
-          {/* Logo / Badge Area */}
-          <div className="mb-8 flex items-center justify-center gap-2 animate-fade-in-up" style={{ animationDelay: '200ms', animationFillMode: 'both' }}>
-            <div className="flex -space-x-1">
-              <span className="w-3 h-3 rounded-full bg-blue-500 block"></span>
-              <span className="w-3 h-3 rounded-full bg-red-500 block opacity-80"></span>
-              <span className="w-3 h-3 rounded-full bg-yellow-500 block opacity-90"></span>
-            </div>
-            <span className="text-xl font-medium tracking-tight text-gray-800">
-              <span className="font-semibold text-black">Nshuti</span> Maurice
-            </span>
-          </div>
 
           <h1 className="text-[40px] md:text-[64px] lg:text-[76px] font-medium text-[#1a1a1c] tracking-tight leading-[1.05] mb-6 max-w-[900px]">
             <Typewriter text="Hi, I'm Nshuti Maurice" speed={60} delay={400} />
@@ -98,10 +95,6 @@ export default function About() {
             </button>
             <button className="bg-white border border-gray-200 text-[#1a1a1c] px-8 py-3.5 rounded-full font-medium hover:bg-gray-50 transition-colors w-full sm:w-auto justify-center">
               Contact Me
-            </button>
-          </div>
-        </div>
-      </section>
 
       {/* About Content Area without Background */}
       <section id="about" className="bg-white">
