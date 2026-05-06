@@ -28,6 +28,10 @@ const projects = [
     github: 'https://github.com/mourice-dev',
     live: 'https://resume-generetor-react-d7ckg4htl-nshutikope-2194s-projects.vercel.app/',
   },
+  image: resumeImg,
+    github: 'https://github.com/mourice-dev',
+    live: 'https://resume-generetor-react-d7ckg4htl-nshutikope-2194s-projects.vercel.app/',
+  },
   {
     id: 2,
     title: 'Express Ecommerce',
