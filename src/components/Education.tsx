@@ -1,57 +1,19 @@
 import { useEffect, useRef, useState } from 'react'
-import { GraduationCap } from 'lucide-react'
-import WaveBackground from './WaveBackground'
-
-/* ──────────────────────────────────────────────
-   TODO: Replace the placeholder school/university
-   names below with your REAL institution names,
-   degree titles, and date ranges.
-   ────────────────────────────────────────────── */
 
 const education = [
   {
     year: '2019 – 2022',
     degree: 'Software Development',
     institution: 'Secondary School',
-    desc: 'Studied software development fundamentals including programming, databases, and web technologies. This is where I first discovered my passion for coding and built my foundational programming knowledge.',
-    icon: GraduationCap,
+    desc: 'Studied software development fundamentals including programming, databases, and web technologies. This is where I first discovered my passion for coding.',
   },
   {
     year: '2023 – Present',
     degree: 'Bachelor of Information Technology',
     institution: 'University',
     desc: 'Currently pursuing a degree in Information Technology, deepening my expertise in software engineering, data structures, algorithms, and modern application development.',
-    icon: GraduationCap,
   },
 ]
-
-function TimelineItem({ year, title, subtitle, desc, icon: Icon, isVisible, delay }: {
-  year: string; title: string; subtitle: string; desc: string
-  icon: typeof GraduationCap; isVisible: boolean; delay: number
-}) {
-  return (
-    <div
-      className={`flex gap-4 transition-all duration-[1000ms] ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}
-      style={{ transitionDelay: `${delay}ms` }}
-    >
-      {/* Icon */}
-      <div className="flex flex-col items-center">
-        <div className="w-11 h-11 bg-[#f5f5f7] border border-black/5 rounded-xl flex items-center justify-center shrink-0">
-          <Icon size={18} className="text-[#1d1d1f]" strokeWidth={1.5} />
-        </div>
-        <div className="w-px flex-1 bg-black/5 mt-3" />
-      </div>
-
-      {/* Content */}
-      <div className="pb-7 flex-1">
-        <p className="text-[16px] font-bold text-[#86868b] tracking-wide mb-1">{year}</p>
-        <h4 className="text-[18px] font-bold text-[#1d1d1f] mb-0.5">{title}</h4>
-        <p className="text-[17px] font-semibold text-[#6e6e73] mb-2">{subtitle}</p>
-        <p className="text-[17px] text-[#86868b] leading-relaxed">{desc}</p>
-      </div>
-    </div>
-  )
-}
 
 export default function Education() {
   const ref = useRef<HTMLDivElement>(null)
@@ -67,33 +29,37 @@ export default function Education() {
   }, [])
 
   return (
-    <section id="education" className="relative py-20 bg-white overflow-hidden">
-      <WaveBackground />
-
-      <div className="relative z-10 max-w-[800px] mx-auto px-5">
-        {/* Header */}
-        <div className="text-center mb-12">
-          <p className="text-[16px] font-bold tracking-[0.15em] uppercase text-[#86868b] mb-3">Background</p>
-          <h2 className="text-[28px] lg:text-[36px] font-medium text-[#1a1a1c] tracking-tight">
+    <section id="education" className="relative py-28 bg-white overflow-hidden">
+      <div ref={ref} className="relative z-10 max-w-[900px] mx-auto px-8 md:px-12">
+        {/* Section Header */}
+        <div className={`mb-16 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}>
+          <h2 className="font-sans text-3xl md:text-4xl font-bold text-[#1A1A1A] tracking-tight">
             Education
           </h2>
         </div>
 
-        <div ref={ref} className="pl-2 sm:pl-0">
-          <div className="max-w-2xl mx-auto">
-            {education.map((item, i) => (
-              <TimelineItem
-                key={item.degree}
-                year={item.year}
-                title={item.degree}
-                subtitle={item.institution}
-                desc={item.desc}
-                icon={item.icon}
-                isVisible={isVisible}
-                delay={i * 250 + 200}
-              />
-            ))}
-          </div>
+        {/* Timeline */}
+        <div className="space-y-0">
+          {education.map((item, i) => (
+            <div
+              key={item.degree}
+              className={`py-8 transition-all duration-1000 ${
+                isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+              } ${i > 0 ? 'border-t border-black/[0.06]' : ''}`}
+              style={{ transitionDelay: `${i * 200 + 200}ms` }}
+            >
+              <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-2 mb-3">
+                <div>
+                  <h4 className="font-sans text-xl md:text-2xl font-bold text-[#1A1A1A]">{item.degree}</h4>
+                  <p className="text-[#6B6B6B] text-sm font-sans font-medium mt-1">{item.institution}</p>
+                </div>
+                <span className="tag-pill text-xs shrink-0">{item.year}</span>
+              </div>
+              <p className="text-[#6B6B6B] text-[15px] leading-relaxed font-sans max-w-xl">
+                {item.desc}
+              </p>
+            </div>
+          ))}
         </div>
       </div>
     </section>

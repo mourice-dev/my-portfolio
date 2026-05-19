@@ -1,24 +1,23 @@
 import { useEffect } from 'react'
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom'
-import AntigravityNavbar from './components/AntigravityNavbar'
-import About from './components/About'
-import Portfolio from './components/Portfolio'
-import TechStack from './components/TechStack'
-import Education from './components/Education'
-import Contact from './components/Contact'
+import Navbar from './components/Navbar'
 import Footer from './components/Footer'
 
+// Pages
+import Home from './pages/Home'
+import Work from './pages/Work'
+import Project from './pages/Project'
+import AboutPage from './pages/AboutPage'
+import ContactPage from './pages/ContactPage'
+
 /**
- * Handles scrolling to a hash (#contact, #about, etc.) after navigation.
- * This fixes the double-click issue: React Router changes the route first,
- * then this effect scrolls to the target element once the page renders.
+ * Handles scrolling to top or to a hash (#services) after navigation.
  */
 function ScrollToHash() {
   const { pathname, hash } = useLocation()
 
   useEffect(() => {
     if (hash) {
-      // Small delay to let the new page render before scrolling
       const timer = setTimeout(() => {
         const el = document.querySelector(hash)
         if (el) el.scrollIntoView({ behavior: 'smooth' })
@@ -32,32 +31,24 @@ function ScrollToHash() {
   return null
 }
 
-function HomePage() {
-  return (
-    <>
-      <About />
-      <Portfolio />
-      <Education />
-      <TechStack />
-      <Contact />
-    </>
-  )
-}
-
 export default function App() {
   return (
     <BrowserRouter>
       <ScrollToHash />
-      <div className="min-h-screen bg-white font-sans text-gray-900 flex flex-col relative">
-        <AntigravityNavbar />
+      <div className="min-h-screen bg-[#f0f2f8] font-sans text-[#1A1A1A] flex flex-col relative">
+        <Navbar />
         <main className="flex-1 relative z-10">
           <Routes>
-            <Route path="/" element={<HomePage />} />
+            <Route path="/" element={<Home />} />
+            <Route path="/work" element={<Work />} />
+            <Route path="/work/:id" element={<Project />} />
+            <Route path="/about" element={<AboutPage />} />
+            <Route path="/contact" element={<ContactPage />} />
           </Routes>
         </main>
-        <div className="relative z-10 bg-white">
-          <Footer />
-        </div>
+        {/* We place Footer here, but ContactForm is now handled by the pages 
+            (or we can place Footer globally since all pages need it) */}
+        <Footer />
       </div>
     </BrowserRouter>
   )

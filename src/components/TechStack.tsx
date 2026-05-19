@@ -1,129 +1,49 @@
 import { useEffect, useRef, useState } from 'react'
-const techStack = [
-  { 
-    name: 'React', 
-    logo: (
-      <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" strokeWidth="1.5">
-        <circle cx="12" cy="12" r="3"/>
-        <ellipse cx="12" cy="12" rx="10" ry="4" transform="rotate(30 12 12)"/>
-        <ellipse cx="12" cy="12" rx="10" ry="4" transform="rotate(-30 12 12)"/>
-        <ellipse cx="12" cy="12" rx="10" ry="4" transform="rotate(90 12 12)"/>
-      </svg>
-    )
-  },
-  { 
-    name: 'TypeScript', 
-    logo: (
-      <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" strokeWidth="1.5">
-        <path d="M2 2h20v20H2z"/>
-        <text x="12" y="16" fontSize="10" fontFamily="sans-serif" fontWeight="bold" textAnchor="middle" fill="currentColor" stroke="none">TS</text>
-      </svg>
-    )
-  },
-  { 
-    name: 'Node.js', 
-    logo: (
-      <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" strokeWidth="1.5">
-        <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
-      </svg>
-    )
-  },
-  { 
-    name: 'AWS', 
-    logo: (
-      <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" strokeWidth="1.5">
-        <path d="M17.5 19c2.5 0 4.5-2 4.5-4.5 0-2.3-1.8-4.2-4.1-4.5C17.4 6.7 14.9 4 12 4c-2.8 0-5.1 2-5.8 4.6C3.9 8.8 2 10.9 2 13.5 2 16.5 4.5 19 7.5 19h10z"/>
-      </svg>
-    )
-  },
-  { 
-    name: 'PostgreSQL', 
-    logo: (
-      <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
-        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z"/>
-      </svg>
-    )
-  },
-  { 
-    name: 'GraphQL', 
-    logo: (
-      <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" strokeWidth="1.5">
-        <circle cx="12" cy="12" r="3"/>
-        <path d="M12 2v7M12 15v7M2 12h7M15 12h7M5 5l5 5M19 19l-5-5M19 5l-5 5M5 19l5-5"/>
-      </svg>
-    )
-  },
-  { 
-    name: 'Figma', 
-    logo: (
-      <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" strokeWidth="1.5">
-        <path d="M12 2a4 4 0 0 0-4 4v12a4 4 0 1 0 4-4H8a4 4 0 0 0 8-4v-4a4 4 0 0 0-4-4z"/>
-      </svg>
-    )
-  },
-  {
-    name: 'Codewars',
-    logo: <img src="https://cdn.simpleicons.org/codewars/1d1d1f" width="24" height="24" alt="Codewars" />
-  },
-  {
-    name: 'Tailwind CSS',
-    logo: <img src="https://cdn.simpleicons.org/tailwindcss/1d1d1f" width="24" height="24" alt="Tailwind CSS" />
-  },
-  {
-    name: 'MySQL',
-    logo: <img src="https://cdn.simpleicons.org/mysql/1d1d1f" width="24" height="24" alt="MySQL" />
-  },
-  {
-    name: 'Oracle',
-    logo: (
-      <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
-        <path d="M7.076 7.076C3.162 7.076 0 10.239 0 14.15c0 3.913 3.162 7.076 7.076 7.076h9.849c3.912 0 7.075-3.163 7.075-7.076 0-3.912-3.163-7.075-7.075-7.075H7.076zm9.927 11.479H7.076a4.404 4.404 0 010-8.808h9.927a4.404 4.404 0 010 8.808z"/>
-      </svg>
-    )
-  },
-  {
-    name: 'Git',
-    logo: <img src="https://cdn.simpleicons.org/git/1d1d1f" width="24" height="24" alt="Git" />
-  },
-  {
-    name: 'GitHub',
-    logo: <img src="https://cdn.simpleicons.org/github/1d1d1f" width="24" height="24" alt="GitHub" />
-  },
-  {
-    name: 'JSON',
-    logo: <img src="https://cdn.simpleicons.org/json/1d1d1f" width="24" height="24" alt="JSON" />
-  },
-  {
-    name: 'VS Code',
-    logo: (
-      <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
-        <path d="M17.583.063a1.5 1.5 0 00-1.032.392l-7.9 7.208L4.15 4.356a1 1 0 00-1.3.074l-1.5 1.373a1 1 0 00-.013 1.44L5.59 12l-4.253 4.757a1 1 0 00.013 1.44l1.5 1.373a1 1 0 001.3.074l4.5-3.307 7.9 7.208a1.5 1.5 0 002.38-1.21V1.274A1.5 1.5 0 0017.583.063zM17.5 18.56l-6.402-5.56 6.402-5.56z"/>
-      </svg>
-    )
-  },
-  {
-    name: 'Vite',
-    logo: <img src="https://cdn.simpleicons.org/vite/1d1d1f" width="24" height="24" alt="Vite" />
-  },
-  {
-    name: 'Postman',
-    logo: <img src="https://cdn.simpleicons.org/postman/1d1d1f" width="24" height="24" alt="Postman" />
-  },
-  {
-    name: 'Supabase',
-    logo: <img src="https://cdn.simpleicons.org/supabase/1d1d1f" width="24" height="24" alt="Supabase" />
-  },
-  {
-    name: 'Vercel',
-    logo: <img src="https://cdn.simpleicons.org/vercel/1d1d1f" width="24" height="24" alt="Vercel" />
-  },
-  {
-    name: 'Netlify',
-    logo: <img src="https://cdn.simpleicons.org/netlify/1d1d1f" width="24" height="24" alt="Netlify" />
-  },
-]
 
-import FloatingBoxesBackground from './FloatingBoxesBackground'
+const tools = [
+  { name: 'JavaScript', icon: (
+    <svg viewBox="0 0 24 24" className="w-8 h-8" fill="#1A1A1A"><path d="M0 0h24v24H0V0zm22.034 18.276c-.175-1.095-.888-2.015-3.003-2.873-.736-.345-1.554-.585-1.797-1.14-.091-.33-.105-.51-.046-.705.15-.646.915-.84 1.515-.66.39.12.75.42.976.9 1.034-.676 1.034-.676 1.755-1.125-.27-.42-.405-.6-.586-.78-.63-.705-1.469-1.065-2.834-1.034l-.705.089c-.676.165-1.32.525-1.71 1.005-1.14 1.291-.811 3.541.569 4.471 1.365 1.02 3.361 1.244 3.616 2.205.24 1.17-.87 1.545-1.966 1.41-.811-.18-1.26-.586-1.755-1.336l-1.83 1.051c.21.48.45.689.81 1.109 1.74 1.756 6.09 1.666 6.871-1.004.029-.09.24-.705.074-1.65l.046.067zm-8.983-7.245h-2.248c0 1.938-.009 3.864-.009 5.805 0 1.232.063 2.363-.138 2.711-.33.689-1.18.601-1.566.48-.396-.196-.597-.466-.83-.855-.063-.105-.11-.196-.127-.196l-1.825 1.125c.305.63.75 1.172 1.324 1.517.855.51 2.004.675 3.207.405.783-.226 1.458-.691 1.811-1.411.51-.93.402-2.07.397-3.346.012-2.054 0-4.109 0-6.179l.004-.056z"/></svg>
+  )},
+  { name: 'TypeScript', icon: (
+    <svg viewBox="0 0 24 24" className="w-8 h-8" fill="#1A1A1A"><path d="M1.125 0C.502 0 0 .502 0 1.125v21.75C0 23.498.502 24 1.125 24h21.75c.623 0 1.125-.502 1.125-1.125V1.125C24 .502 23.498 0 22.875 0zm17.363 9.75c.612 0 1.154.037 1.627.111a6.38 6.38 0 011.306.34v2.458a3.95 3.95 0 00-.643-.361 5.093 5.093 0 00-.717-.26 5.453 5.453 0 00-1.426-.2c-.3 0-.573.028-.819.086a2.1 2.1 0 00-.623.242c-.17.104-.3.229-.393.374a.888.888 0 00-.14.49c0 .196.053.373.156.529.104.156.252.304.443.444s.42.276.69.394.57.24.907.348c.481.168.922.36 1.325.578.404.218.753.476 1.048.771.295.296.526.64.69 1.033.164.393.246.853.246 1.38 0 .703-.138 1.288-.415 1.756a3.087 3.087 0 01-1.095 1.109 4.602 4.602 0 01-1.563.587 8.147 8.147 0 01-1.822.2c-.656 0-1.288-.067-1.895-.2a6.272 6.272 0 01-1.63-.578v-2.598c.263.199.538.376.826.532.287.156.586.29.895.4a5.51 5.51 0 001.825.3c.283 0 .545-.033.785-.1a1.72 1.72 0 00.58-.257c.16-.107.281-.243.362-.406a1.13 1.13 0 00.119-.512 1.06 1.06 0 00-.167-.579 1.87 1.87 0 00-.492-.467 5.17 5.17 0 00-.806-.422c-.322-.14-.699-.295-1.13-.463a9.588 9.588 0 01-1.219-.583 4.26 4.26 0 01-.979-.754 3.2 3.2 0 01-.648-1.02c-.155-.39-.233-.846-.233-1.367 0-.644.145-1.21.434-1.697a3.553 3.553 0 011.162-1.168 5.26 5.26 0 011.664-.68 7.97 7.97 0 011.908-.224zm-9.893.5h5.066v2.006H10.6v8.744h-2.41v-8.744H5.196V10.25z"/></svg>
+  )},
+  { name: 'React', icon: (
+    <svg viewBox="0 0 24 24" className="w-8 h-8" fill="#1A1A1A"><path d="M14.23 12.004a2.236 2.236 0 01-2.235 2.236 2.236 2.236 0 01-2.236-2.236 2.236 2.236 0 012.235-2.236 2.236 2.236 0 012.236 2.236zm2.648-10.69c-1.346 0-3.107.96-4.888 2.622-1.78-1.653-3.542-2.602-4.887-2.602-.31 0-.592.06-.84.176C4.818 2.174 4.318 4.09 4.89 7.057c-2.502.87-4.14 2.22-4.14 3.948 0 1.73 1.65 3.09 4.163 3.96-.5 2.88.028 4.82 1.488 5.47.247.112.527.17.835.17 1.352 0 3.12-.96 4.894-2.61 1.782 1.66 3.55 2.61 4.897 2.61.31 0 .594-.06.84-.172 1.437-.66 1.968-2.583 1.5-5.472 2.495-.87 4.132-2.232 4.132-3.956 0-1.73-1.65-3.09-4.16-3.96.5-2.88-.02-4.82-1.48-5.47a1.804 1.804 0 00-.83-.17zm-.062 1.59c.092 0 .17.012.24.04.605.278.888 1.33.612 3.032a14.84 14.84 0 01-.305 1.37 24.515 24.515 0 00-3.225-.743 24.08 24.08 0 00-2.098-2.532c1.508-1.42 2.93-2.166 3.776-2.166zm-7.532.009c.836 0 2.253.74 3.755 2.146a23.58 23.58 0 00-2.078 2.51 24.45 24.45 0 00-3.237.746 14.714 14.714 0 01-.312-1.36c-.28-1.706.003-2.762.61-3.04.068-.03.146-.04.237-.04zM6.14 8.958a22.053 22.053 0 00-.918 2.31 22.1 22.1 0 01-1.38-.634c-.64-.33-1.153-.667-1.523-.976-.237-.2-.4-.395-.49-.57.33-.77 1.422-1.618 3.25-2.22.103.23.215.46.337.692.106.2.218.398.335.594l.39.804zm-.084 4.076l-.336.594c-.122.23-.234.462-.338.694-1.838-.61-2.94-1.466-3.28-2.24.094-.175.258-.372.5-.576.373-.314.89-.655 1.54-.99.455-.222.968-.43 1.524-.68-.206.77-.38 1.572-.527 2.398-.02.11-.04.22-.058.33l-.025.127zm5.934 5.052c-1.508 1.42-2.93 2.166-3.775 2.166a.756.756 0 01-.24-.04c-.607-.278-.89-1.33-.614-3.032.078-.46.18-.948.305-1.37a24.515 24.515 0 003.226.743c.695.895 1.4 1.705 2.098 2.532zm-.062-1.536a21.6 21.6 0 01-2.618-.392 21.6 21.6 0 01-.993-1.56 21.6 21.6 0 01-.858-1.676c.247-.554.527-1.1.84-1.634.258-.44.53-.87.817-1.287a21.6 21.6 0 012.618.39c.354.544.686 1.107.993 1.563.307.456.59.923.858 1.673-.247.554-.527 1.1-.84 1.634a21.6 21.6 0 01-.817 1.29zm2.088.392c.838.187 1.63.404 2.37.65-1.838.6-2.94 1.456-3.28 2.233a1.404 1.404 0 01-.5-.576c-.374-.314-.89-.655-1.54-.99a15.75 15.75 0 01-.76-.41c.236-.77.503-1.572.69-2.398l.025-.127.336-.594c.122-.23.234-.462.338-.694z"/></svg>
+  )},
+  { name: 'Node.js', icon: (
+    <svg viewBox="0 0 24 24" className="w-8 h-8" fill="#1A1A1A"><path d="M11.998 24c-.321 0-.641-.084-.922-.247l-2.936-1.737c-.438-.245-.224-.332-.08-.383.585-.203.703-.25 1.328-.604.065-.037.151-.023.218.017l2.256 1.339a.29.29 0 00.272 0l8.795-5.076a.277.277 0 00.134-.238V6.921a.28.28 0 00-.137-.242L12.135 1.6a.272.272 0 00-.27 0L3.078 6.68a.282.282 0 00-.14.243v10.15c0 .099.053.19.138.236l2.409 1.392c1.307.654 2.108-.116 2.108-.89V7.787c0-.142.114-.253.256-.253h1.115c.139 0 .255.112.255.253v10.021c0 1.745-.95 2.745-2.604 2.745-.508 0-.909 0-2.026-.55L2.28 18.675a1.853 1.853 0 01-.922-1.604V6.921c0-.659.353-1.275.922-1.603L11.076.24a1.932 1.932 0 011.846 0l8.794 5.078c.57.329.924.944.924 1.603v10.15c0 .659-.354 1.273-.924 1.604l-8.794 5.078a1.88 1.88 0 01-.924.247z"/></svg>
+  )},
+  { name: 'HTML5', icon: (
+    <svg viewBox="0 0 24 24" className="w-8 h-8" fill="#1A1A1A"><path d="M1.5 0h21l-1.91 21.563L11.977 24l-8.565-2.438L1.5 0zm7.031 9.75l-.232-2.718 10.059.003.076-.757.076-.771.076-.77H6.53l.69 7.962h7.577l-.336 3.586-2.449.654-2.451-.66-.158-1.784H7.39l.313 3.529 4.303 1.195 4.3-1.195.64-7.134.052-.512H8.531z"/></svg>
+  )},
+  { name: 'CSS3', icon: (
+    <svg viewBox="0 0 24 24" className="w-8 h-8" fill="#1A1A1A"><path d="M1.5 0h21l-1.91 21.563L11.977 24l-8.564-2.438L1.5 0zm17.09 4.413L5.41 4.41l.213 2.622 10.125.002-.255 2.716h-6.64l.24 2.573h6.182l-.366 3.523-2.91.804-2.956-.81-.188-2.11h-2.61l.29 3.855L12 19.002l5.355-1.12.734-9.467H7.092l-.256-2.813h12.594l-.34-1.19z"/></svg>
+  )},
+  { name: 'Tailwind CSS', icon: (
+    <svg viewBox="0 0 24 24" className="w-8 h-8" fill="#1A1A1A"><path d="M12.001 4.8c-3.2 0-5.2 1.6-6 4.8 1.2-1.6 2.6-2.2 4.2-1.8.913.228 1.565.89 2.288 1.624C13.666 10.618 15.027 12 18.001 12c3.2 0 5.2-1.6 6-4.8-1.2 1.6-2.6 2.2-4.2 1.8-.913-.228-1.565-.89-2.288-1.624C16.337 6.182 14.976 4.8 12.001 4.8zM6.001 12c-3.2 0-5.2 1.6-6 4.8 1.2-1.6 2.6-2.2 4.2-1.8.913.228 1.565.89 2.288 1.624 1.177 1.194 2.538 2.576 5.512 2.576 3.2 0 5.2-1.6 6-4.8-1.2 1.6-2.6 2.2-4.2 1.8-.913-.228-1.565-.89-2.288-1.624C10.337 13.382 8.976 12 6.001 12z"/></svg>
+  )},
+  { name: 'MySQL', icon: (
+    <svg viewBox="0 0 24 24" className="w-8 h-8" fill="#1A1A1A"><path d="M16.405 5.501c-.115 0-.193.014-.274.033v.013h.014c.054.104.146.18.214.273.054.107.1.214.154.32l.014-.015c.094-.066.14-.172.14-.333-.04-.047-.046-.094-.08-.14-.04-.067-.126-.1-.18-.153zM5.77 18.695h-.927a50.854 50.854 0 00-.27-4.41h-.008l-1.41 4.41H2.45l-1.4-4.41h-.01a72.892 72.892 0 00-.195 4.41H0c.055-1.966.192-3.81.396-5.54h1.124l1.32 3.96h.008l1.347-3.96h1.065c.23 2.112.353 3.956.41 5.54zm4.073-3.627c-.61 1.463-1.2 2.632-2.14 2.632-.14 0-.31-.032-.46-.092v-.64c.15.046.27.065.42.065.635 0 1.066-.924 1.23-1.35L7.21 13.16h.85l1.028 3.032h.01l.846-3.032h.807l-1.908 5.506z"/></svg>
+  )},
+  { name: 'Git', icon: (
+    <svg viewBox="0 0 24 24" className="w-8 h-8" fill="#1A1A1A"><path d="M23.546 10.93L13.067.452a1.55 1.55 0 00-2.188 0L8.708 2.627l2.76 2.76a1.838 1.838 0 012.327 2.341l2.66 2.66a1.838 1.838 0 11-1.103 1.03l-2.48-2.48v6.53a1.838 1.838 0 11-1.512-.18V8.87a1.838 1.838 0 01-1-2.41L7.6 3.7.452 10.848a1.55 1.55 0 000 2.188l10.48 10.48a1.55 1.55 0 002.186 0l10.43-10.398a1.55 1.55 0 000-2.188z"/></svg>
+  )},
+  { name: 'GitHub', icon: (
+    <svg viewBox="0 0 24 24" className="w-8 h-8" fill="#1A1A1A"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+  )},
+  { name: 'VS Code', icon: (
+    <svg viewBox="0 0 24 24" className="w-8 h-8" fill="#1A1A1A"><path d="M23.15 2.587L18.21.21a1.494 1.494 0 00-1.705.29l-9.46 8.63-4.12-3.128a.999.999 0 00-1.276.057L.327 7.261A1 1 0 00.326 8.74L3.899 12 .326 15.26a1 1 0 00.001 1.479L1.65 17.94a.999.999 0 001.276.057l4.12-3.128 9.46 8.63a1.492 1.492 0 001.704.29l4.942-2.377A1.5 1.5 0 0024 20.06V3.939a1.5 1.5 0 00-.85-1.352zm-5.146 14.861L10.826 12l7.178-5.448v10.896z"/></svg>
+  )},
+  { name: 'Vercel', icon: (
+    <svg viewBox="0 0 24 24" className="w-8 h-8" fill="#1A1A1A"><path d="M24 22.525H0l12-21.05 12 21.05z"/></svg>
+  )},
+  { name: 'Vite', icon: (
+    <svg viewBox="0 0 24 24" className="w-8 h-8" fill="#1A1A1A"><path d="m8.286 10.578.512-8.657a.306.306 0 0 1 .247-.282L17.377.006a.306.306 0 0 1 .353.385l-1.558 5.403a.306.306 0 0 0 .352.385l2.388-.46a.306.306 0 0 1 .332.438l-6.79 13.55-.123.19a.294.294 0 0 1-.252.14c-.177 0-.35-.152-.305-.369l1.36-6.53a.306.306 0 0 0-.332-.365l-2.415.477a.306.306 0 0 1-.332-.365L8.286 10.578z"/></svg>
+  )},
+  { name: 'Express', icon: (
+    <svg viewBox="0 0 24 24" className="w-8 h-8" fill="#1A1A1A"><path d="M24 18.588a1.529 1.529 0 01-1.895-.72l-3.45-4.771-.5-.667-4.003 5.444a1.466 1.466 0 01-1.802.708l5.158-6.92-4.798-6.251a1.595 1.595 0 011.9.666l3.511 4.87 3.56-4.875a1.435 1.435 0 011.771-.651L13.81 11.66l4.978 6.486a1.606 1.606 0 01-1.786.711l-3.498-4.87-3.56 4.875a1.481 1.481 0 01-1.771.67l4.8-6.518-4.834-6.346a1.52 1.52 0 011.783-.678l3.498 4.86L17.46 5.47a1.504 1.504 0 011.872-.678l-4.8 6.426L24 18.588z"/></svg>
+  )},
+]
 
 export default function TechStack() {
   const ref = useRef<HTMLDivElement>(null)
@@ -132,36 +52,37 @@ export default function TechStack() {
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => { if (entry.isIntersecting) { setIsVisible(true); observer.disconnect() } },
-      { threshold: 0.2 }
+      { threshold: 0.1 }
     )
     if (ref.current) observer.observe(ref.current)
     return () => observer.disconnect()
   }, [])
 
   return (
-    <section className="relative py-12 bg-white border-t border-b border-gray-100 overflow-hidden">
-      <FloatingBoxesBackground />
-
-      <div className="relative z-10 max-w-[1200px] mx-auto px-5">
-        {/* Tech stack */}
-        <div className="text-center mb-8">
-          <p className="text-[18px] font-bold tracking-[0.15em] uppercase text-[#86868b] mb-2">Tech Stack</p>
-          <h3 className="text-[28px] lg:text-[36px] font-medium text-[#1a1a1c] tracking-tight">Tools I Work With</h3>
+    <section className="relative py-24 bg-white border-y border-black/[0.04] overflow-hidden">
+      <div ref={ref} className="relative z-10 max-w-[1200px] mx-auto px-8 md:px-12">
+        <div className="mb-12">
+          <h2 className={`font-sans text-2xl md:text-3xl font-bold text-[#1A1A1A] tracking-tight transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}>
+            Tools & Languages
+          </h2>
+          <p className={`text-[#6B6B6B] text-sm mt-3 max-w-lg font-sans leading-relaxed transition-all duration-700 delay-200 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
+            The technologies I use daily to build modern, scalable applications.
+          </p>
         </div>
 
-        <div ref={ref} className="flex flex-wrap justify-center gap-4 sm:gap-6">
-          {techStack.map((tech, i) => (
+        <div className="grid grid-cols-4 sm:grid-cols-5 md:grid-cols-7 gap-5">
+          {tools.map((tech, i) => (
             <div
               key={tech.name}
-              className={`flex flex-col items-center gap-2 group cursor-default transition-all duration-[1000ms] ${
+              className={`group flex flex-col items-center justify-center gap-3 p-5 rounded-2xl bg-[#f8f9fc] border border-black/[0.04] hover:border-black/[0.12] hover:-translate-y-1 hover:shadow-lg transition-all duration-500 cursor-default ${
                 isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
               }`}
-              style={{ transitionDelay: `${i * 150}ms` }}
+              style={{ transitionDelay: `${i * 50}ms` }}
             >
-              <div className="w-14 h-14 bg-white border border-black/5 rounded-2xl flex items-center justify-center text-[#1d1d1f] shadow-sm hover:shadow-md hover:border-black/15 hover:-translate-y-1 transition-all duration-200">
-                {tech.logo}
+              <div className="group-hover:scale-110 transition-transform duration-300">
+                {tech.icon}
               </div>
-              <span className="text-[18px] text-[#86868b] font-medium text-center hidden sm:block">{tech.name}</span>
+              <span className="text-[11px] font-sans font-semibold text-[#6B6B6B] text-center leading-tight">{tech.name}</span>
             </div>
           ))}
         </div>
