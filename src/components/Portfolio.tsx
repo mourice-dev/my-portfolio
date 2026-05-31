@@ -25,7 +25,7 @@ const projects = [
     whatIdid: ['Frontend', 'UI/UX Design'],
     image: resumeMockup,
     github: 'https://github.com/mourice-dev',
-    live: 'https://resume-generetor-react-d7ckg4htl-nshutikope-2194s-projects.vercel.app/',
+    live: 'https://eresume-generator.vercel.app/',
   },
   {
     id: 2,
@@ -42,7 +42,7 @@ const projects = [
     whatIdid: ['Frontend', 'Backend', 'Database', 'Authentication'],
     image: ecommerceMockup,
     github: 'https://github.com/mourice-dev',
-    live: 'https://express-ecommerce-idj10f9gj-nshutikope-2194s-projects.vercel.app',
+    live: 'https://orangeshop-fe.vercel.app/',
   },
 ]
 

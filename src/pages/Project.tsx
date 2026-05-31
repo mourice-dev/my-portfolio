@@ -90,7 +90,7 @@ export default function Project() {
             >
               <div className="browser-mockup relative">
                 <img
-                  src={project.image}
+                  src={project.image ?? undefined}
                   alt={project.headline}
                   className="w-full h-auto object-cover transform group-hover:scale-[1.01] transition-transform duration-700"
                 />

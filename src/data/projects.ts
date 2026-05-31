@@ -18,7 +18,7 @@ export const projects = [
     whatIdid: ['React', 'TypeScript', 'Tailwind CSS', 'UI/UX Design'],
     image: resumeImage,
     github: 'https://github.com/mourice-dev',
-    live: 'https://resume-generetor-react-d7ckg4htl-nshutikope-2194s-projects.vercel.app/',
+    live: 'https://eresume-generator.vercel.app/',
   },
   {
     id: 'express-ecommerce',
@@ -36,7 +36,7 @@ export const projects = [
     whatIdid: ['React', 'Express.js', 'MySQL', 'Authentication', 'REST API'],
     image: ecommerceImage,
     github: 'https://github.com/mourice-dev',
-    live: 'https://express-ecommerce-idj10f9gj-nshutikope-2194s-projects.vercel.app',
+    live: 'https://orangeshop-fe.vercel.app/',
   },
   {
     id: 'xauusd-calculator',

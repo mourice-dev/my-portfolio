@@ -1,6 +1,6 @@
 const workLinks = [
-  { label: 'Resume Generator', href: 'https://resume-generetor-react-d7ckg4htl-nshutikope-2194s-projects.vercel.app/' },
-  { label: 'E-commerce App', href: 'https://express-ecommerce-idj10f9gj-nshutikope-2194s-projects.vercel.app' },
+  { label: 'Resume Generator', href: 'https://eresume-generator.vercel.app/' },
+  { label: 'E-commerce App', href: 'https://orangeshop-fe.vercel.app/' },
   { label: 'See all →', href: 'https://github.com/mourice-dev' },
 ]
 
