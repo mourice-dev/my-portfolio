@@ -17,7 +17,7 @@ export const projects = [
     ],
     whatIdid: ['React', 'TypeScript', 'Tailwind CSS', 'UI/UX Design'],
     image: resumeImage,
-    github: 'https://github.com/mourice-dev',
+    github: 'https://github.com/mourice-dev/E-resume-generator.git',
     live: 'https://eresume-generator.vercel.app/',
   },
   {
@@ -35,7 +35,7 @@ export const projects = [
     ],
     whatIdid: ['React', 'Express.js', 'MySQL', 'Authentication', 'REST API'],
     image: ecommerceImage,
-    github: 'https://github.com/mourice-dev',
+    github: 'https://github.com/mourice-dev/Express-Ecommerce-FE.git',
     live: 'https://orangeshop-fe.vercel.app/',
   },
   {
