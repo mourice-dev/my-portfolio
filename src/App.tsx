@@ -9,6 +9,7 @@ import Work from './pages/Work'
 import Project from './pages/Project'
 import AboutPage from './pages/AboutPage'
 import ContactPage from './pages/ContactPage'
+import CertificatesPage from './pages/CertificatesPage'
 
 /**
  * Handles scrolling to top or to a hash (#services) after navigation.
@@ -44,6 +45,7 @@ export default function App() {
             <Route path="/work/:id" element={<Project />} />
             <Route path="/about" element={<AboutPage />} />
             <Route path="/contact" element={<ContactPage />} />
+            <Route path="/certificates" element={<CertificatesPage />} />
           </Routes>
         </main>
         {/* We place Footer here, but ContactForm is now handled by the pages 

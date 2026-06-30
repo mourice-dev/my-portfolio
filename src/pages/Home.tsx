@@ -25,7 +25,7 @@ export default function Home() {
       <Testimonial />
       <Services />
       <Education />
-      <Certificates />
+      <Certificates featuredOnly={true} />
       <TechStack />
       <HomeProjects />
       <CTABlock />
