@@ -2,8 +2,44 @@ import resumeImage from '../assets/E-resume.png'
 import ecommerceImage from '../assets/E-commerce.png'
 import shoeEcommerceImage from '../assets/shoe ecommerce.png'
 import weatherAppImage from '../assets/weath app.png'
+import smartCivilEngineeringImage from '../assets/smart civil engineering.png'
 
-export const projects = [
+export interface ProjectType {
+  id: string
+  title: string
+  headline: string
+  description: string
+  client: string
+  year: string
+  service: string
+  overview: string[]
+  whatIdid: string[]
+  image: string | null
+  github: string
+  live: string
+  type: 'personal' | 'professional'
+}
+
+export const projects: ProjectType[] = [
+  {
+    id: 'smart-civil-engineering',
+    title: 'Smart Civil Engineering',
+    headline: 'High-Performance Web Platform for Structural Analysis & CAD Visualization',
+    description: 'A comprehensive digital solution for civil engineers, facilitating structural calculations, interactive blueprint views, and real-time site monitoring.',
+    client: 'Engineering Solutions Inc.',
+    year: '2026',
+    service: 'Full-Stack Development, CAD Integration',
+    overview: [
+      'The Smart Civil Engineering platform was designed to bridge the gap between construction sites and remote engineering offices. It integrates interactive CAD blueprint rendering, real-time telemetry from site sensors, and high-precision structural estimation algorithms.',
+      'I led the frontend architecture, developing WebGL-based viewers for rendering detailed 3D models and optimizing rendering pipelines for smooth performance on mobile tablets used in the field.',
+      'The deployment of this platform reduced project status synchronization delay by 40% and improved estimation accuracy for concrete and steel reinforcement needs.'
+    ],
+    whatIdid: ['React', 'TypeScript', 'Tailwind CSS', 'Three.js / WebGL', 'WebSockets', 'Node.js'],
+    image: smartCivilEngineeringImage,
+    github: '#', // Professional work is typically private
+    live: '#',
+    type: 'professional'
+  },
   {
     id: 'resume-generator',
     title: 'Resume Generator',
@@ -21,6 +57,7 @@ export const projects = [
     image: resumeImage,
     github: 'https://github.com/mourice-dev/ResumeGeneretor-react',
     live: 'https://eresume-generator.vercel.app/',
+    type: 'personal',
   },
   {
     id: 'express-ecommerce',
@@ -39,6 +76,7 @@ export const projects = [
     image: ecommerceImage,
     github: 'https://github.com/mourice-dev/Express-Ecommerce-FE',
     live: 'https://orangeshop-fe.vercel.app/',
+    type: 'personal',
   },
   {
     id: 'shoe-ecommerce',
@@ -57,6 +95,7 @@ export const projects = [
     image: shoeEcommerceImage,
     github: 'https://github.com/mourice-dev/-e-commerce-shoes-tailwindcss-typescript',
     live: '#',
+    type: 'personal',
   },
   {
     id: 'weather-app',
@@ -75,6 +114,7 @@ export const projects = [
     image: weatherAppImage,
     github: 'https://github.com/mourice-dev/weath-app-react-tailwindcss',
     live: '#',
+    type: 'personal',
   },
   {
     id: 'xauusd-calculator',
@@ -93,5 +133,6 @@ export const projects = [
     image: null,
     github: 'https://github.com/mourice-dev',
     live: '#',
+    type: 'personal',
   },
 ]
