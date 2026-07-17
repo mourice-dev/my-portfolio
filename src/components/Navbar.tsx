@@ -20,7 +20,7 @@ const TwitterIcon = () => (
 )
 
 const navLinks = [
-  { label: 'My Work', path: '/work' },
+  { label: 'Works', path: '/work' },
   { label: 'About Me', path: '/about' },
   { label: 'Services', path: '/#services' },
   { label: 'Contact', path: '/contact' },
