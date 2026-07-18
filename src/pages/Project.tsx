@@ -94,28 +94,37 @@ export default function Project() {
                   alt={project.headline}
                   className="w-full h-auto object-cover transform group-hover:scale-[1.01] transition-transform duration-700"
                 />
-                <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-400 flex items-center justify-center gap-4">
-                  {project.live !== '#' && (
-                    <a
-                      href={project.live}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center gap-2 bg-white text-[#1A1A1A] px-6 py-3 rounded-full text-sm font-bold hover:bg-gray-100 transition-colors"
-                    >
-                      <ExternalLink size={14} />
-                      Live Demo
-                    </a>
-                  )}
-                  <a
-                    href={project.github}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-2 bg-white/15 border border-white/25 text-white px-6 py-3 rounded-full text-sm font-bold hover:bg-white/25 transition-colors backdrop-blur-sm"
-                  >
-                    <GithubIcon />
-                    GitHub
-                  </a>
-                </div>
+                {(project.live !== '#' || project.github !== '#') ? (
+                  <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-400 flex items-center justify-center gap-4">
+                    {project.live !== '#' && (
+                      <a
+                        href={project.live}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center gap-2 bg-white text-[#1A1A1A] px-6 py-3 rounded-full text-sm font-bold hover:bg-gray-100 transition-colors"
+                      >
+                        <ExternalLink size={14} />
+                        Live Demo
+                      </a>
+                    )}
+                    {project.github !== '#' && (
+                      <a
+                        href={project.github}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center gap-2 bg-white/15 border border-white/25 text-white px-6 py-3 rounded-full text-sm font-bold hover:bg-white/25 transition-colors backdrop-blur-sm"
+                      >
+                        <GithubIcon />
+                        GitHub
+                      </a>
+                    )}
+                  </div>
+                ) : (
+                  <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-400 flex flex-col items-center justify-center gap-2 text-white">
+                    <span className="font-bold text-lg tracking-wide uppercase">Private Project</span>
+                    <span className="text-sm text-white/70">Codebase and demo restricted under NDA</span>
+                  </div>
+                )}
               </div>
             </div>
 
