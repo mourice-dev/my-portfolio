@@ -56,6 +56,15 @@ export default function HomeProjects() {
 
               {/* Content */}
               <div className="p-6">
+                <div className="flex items-center gap-2 mb-2">
+                  <span className={`text-[10px] px-2 py-0.5 rounded-full font-bold uppercase tracking-wider ${
+                    project.type === 'professional' 
+                      ? 'bg-blue-50 text-blue-600 border border-blue-100' 
+                      : 'bg-gray-100 text-gray-600'
+                  }`}>
+                    {project.type === 'professional' ? 'Professional Work' : 'Personal Project'}
+                  </span>
+                </div>
                 <h3 className="font-sans text-lg font-bold text-[#1A1A1A] mb-2 group-hover:text-[#6B6B6B] transition-colors">
                   {project.title}
                 </h3>
