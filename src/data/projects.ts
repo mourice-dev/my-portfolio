@@ -26,7 +26,7 @@ export const projects: ProjectType[] = [
     title: 'Smart Civil Engineering',
     headline: 'High-Performance Web Platform for Structural Analysis & CAD Visualization',
     description: 'A comprehensive digital solution for civil engineers, facilitating structural calculations, interactive blueprint views, and real-time site monitoring.',
-    client: 'Engineering Solutions Inc.',
+    client: 'Smart Civil Engineering works',
     year: '2026',
     service: 'Full-Stack Development, CAD Integration',
     overview: [
@@ -37,7 +37,7 @@ export const projects: ProjectType[] = [
     whatIdid: ['React', 'TypeScript', 'Tailwind CSS', 'Three.js / WebGL', 'WebSockets', 'Node.js'],
     image: smartCivilEngineeringImage,
     github: '#', // Professional work is typically private
-    live: '#',
+    live: 'https://www.smartcivilengineeringworks.rw/',
     type: 'professional'
   },
   {
