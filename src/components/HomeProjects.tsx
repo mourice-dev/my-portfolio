@@ -80,6 +80,16 @@ export default function HomeProjects() {
             </Link>
           ))}
         </div>
+
+        {/* View More Link */}
+        <div className="mt-16 text-center">
+          <Link
+            to="/work"
+            className="inline-flex items-center gap-2 bg-[#111111] text-white px-8 py-3.5 rounded-full text-sm font-bold hover:bg-black hover:scale-[1.02] transition-all duration-300"
+          >
+            View more
+          </Link>
+        </div>
       </div>
     </section>
   )

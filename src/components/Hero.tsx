@@ -41,10 +41,16 @@ export default function Hero() {
           }`}
           style={{ transitionDelay: '900ms' }}
         >
-          <p className="text-xs font-sans text-[#6B6B6B]/60">
-            <span className="font-semibold text-[#1A1A1A]">Kigali</span>
-            <span className="text-[#6B6B6B]/40"> Kigali, Rwanda</span>
-          </p>
+          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 text-xs font-sans text-[#6B6B6B]/60 w-full">
+            <p>
+              <span className="font-semibold text-[#1A1A1A]">Kigali</span>
+              <span className="text-[#6B6B6B]/40"> Kigali, Rwanda</span>
+            </p>
+            <p className="text-[#1A1A1A] font-medium flex items-center gap-1.5">
+              <span className="w-1.5 h-1.5 bg-green-500 rounded-full animate-pulse"></span>
+              Currently available for new projects & collaborations
+            </p>
+          </div>
         </div>
       </div>
     </section>
