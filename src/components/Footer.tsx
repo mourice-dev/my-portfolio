@@ -23,11 +23,13 @@ export default function Footer() {
       {/* Main footer grid — Gilugali uses 4 columns */}
       <div className="max-w-[1200px] mx-auto px-8 md:px-12 py-16">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
-          {/* Current Location */}
+          {/* Current Location & Availability */}
           <div>
-            <p className="text-sm font-bold text-white mb-4">Current Location</p>
-            <p className="text-white font-bold text-sm">Kigali</p>
-            <p className="text-white/50 text-sm">Kigali, Rwanda</p>
+            <p className="text-sm font-bold text-white mb-4">Location & Availability</p>
+            <p className="text-white font-bold text-sm">Kigali, Rwanda</p>
+            <p className="text-white/50 text-sm mt-2 leading-relaxed">
+              Currently available for new projects & collaborations.
+            </p>
           </div>
 
           {/* Work */}
