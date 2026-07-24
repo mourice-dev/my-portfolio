@@ -1,9 +1,12 @@
 import { useEffect, useRef, useState } from 'react'
 
 const languages = [
-  'JavaScript', 'TypeScript', 'HTML5', 'CSS3', 'Tailwind CSS',
-  'PHP', 'Java', 'C#', 'C++', 'C', 'SQL', 'MySQL', 'Oracle',
-  'Bash', 'React', 'Express', 'Node.js'
+  'JavaScript', 'TypeScript', 'React', 'Node.js', 'Express.js',
+  'Socket.io', 'HTML5', 'CSS3', 'Tailwind CSS', 'SQL',
+  'MySQL', 'PostgreSQL', 'MongoDB', 'Oracle', 'PHP',
+  'Java', 'C#', 'C++', 'C', 'Git', 'GitHub',
+  'Postman', 'VS Code', 'Vercel', 'Vite', 'Three.js / WebGL',
+  'WebSockets', 'Bash', 'Airtable'
 ]
 
 const stats = [
@@ -49,10 +52,13 @@ export default function About() {
               I'm not just writing code — I'm solving puzzles, telling stories through interfaces, 
               and building things that make people's lives a little bit easier.
             </p>
-            <p className="text-base md:text-[17px] text-[#6B6B6B] leading-relaxed mb-10 font-sans">
+            <p className="text-base md:text-[17px] text-[#6B6B6B] leading-relaxed mb-6 font-sans">
               Whether it's a sleek frontend experience or a robust backend system, 
               I approach every project with the same mindset: 
               <span className="font-bold text-[#1A1A1A]"> build it right, make it beautiful, keep it simple.</span>
+            </p>
+            <p className="text-base md:text-[17px] text-[#6B6B6B] leading-relaxed mb-10 font-sans">
+              I am currently available for new projects & collaborations. If you are looking for a dedicated developer to collaborate on projects or bring new ideas to life, feel free to reach out!
             </p>
 
             {/* Stats */}
