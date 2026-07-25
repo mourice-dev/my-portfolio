@@ -10,8 +10,33 @@ const companyLinks = [
   { label: 'Contact', href: '/contact' },
 ]
 
-const connectLinks = [
-  { label: 'LinkedIn', href: 'https://www.linkedin.com/in/nshuti-maurice-2b7a202a0/' },
+import React from 'react'
+
+interface IconProps extends React.SVGProps<SVGSVGElement> {
+  size?: number
+}
+
+const LinkedinIcon = ({ size = 16, className, ...props }: IconProps) => (
+  <svg
+    viewBox="0 0 24 24"
+    width={size}
+    height={size}
+    fill="currentColor"
+    className={className}
+    {...props}
+  >
+    <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.79M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/>
+  </svg>
+)
+
+interface ConnectLink {
+  label: string
+  href: string
+  icon?: React.ComponentType<IconProps>
+}
+
+const connectLinks: ConnectLink[] = [
+  { label: 'LinkedIn', href: 'https://www.linkedin.com/in/nshuti-maurice-2b7a202a0/', icon: LinkedinIcon },
   { label: 'GitHub', href: 'https://github.com/mourice-dev' },
   { label: 'Twitter', href: 'https://x.com/Nshuti_Kope' },
   { label: 'Instagram', href: 'https://www.instagram.com/nshutii__/' },
@@ -78,9 +103,10 @@ export default function Footer() {
                     href={link.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-white/50 text-sm font-sans hover:text-white transition-colors"
+                    className="text-white/50 text-sm font-sans hover:text-white transition-colors flex items-center gap-2"
                   >
-                    {link.label}
+                    {link.icon && <link.icon size={16} />}
+                    <span>{link.label}</span>
                   </a>
                 </li>
               ))}
