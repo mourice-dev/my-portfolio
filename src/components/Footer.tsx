@@ -49,6 +49,23 @@ const TwitterIcon = ({ size = 16, className, ...props }: IconProps) => (
   >
     <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
   </svg>
+const InstagramIcon = ({ size = 16, className, ...props }: IconProps) => (
+  <svg
+    viewBox="0 0 24 24"
+    width={size}
+    height={size}
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    className={className}
+    {...props}
+  >
+    <rect width="20" height="20" x="2" y="2" rx="5" ry="5"/>
+    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+    <line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/>
+  </svg>
 )
 
 interface ConnectLink {
@@ -61,7 +78,7 @@ const connectLinks: ConnectLink[] = [
   { label: 'LinkedIn', href: 'https://www.linkedin.com/in/nshuti-maurice-2b7a202a0/', icon: LinkedinIcon },
   { label: 'GitHub', href: 'https://github.com/mourice-dev', icon: GithubIcon },
   { label: 'Twitter', href: 'https://x.com/Nshuti_Kope', icon: TwitterIcon },
-  { label: 'Instagram', href: 'https://www.instagram.com/nshutii__/' },
+  { label: 'Instagram', href: 'https://www.instagram.com/nshutii__/', icon: InstagramIcon },
 ]
 
 export default function Footer() {
