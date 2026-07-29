@@ -142,10 +142,15 @@ export default function Footer() {
                     href={link.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-white/50 text-sm font-sans hover:text-white transition-colors flex items-center gap-2"
+                    className="text-white/50 text-sm font-sans hover:text-white transition-all duration-300 flex items-center gap-2 group"
                   >
-                    {link.icon && <link.icon size={16} />}
-                    <span>{link.label}</span>
+                    {link.icon && (
+                      <link.icon
+                        size={16}
+                        className="transition-transform duration-300 group-hover:scale-110 group-hover:text-white"
+                      />
+                    )}
+                    <span className="transition-transform duration-300 group-hover:translate-x-0.5">{link.label}</span>
                   </a>
                 </li>
               ))}
