@@ -72,13 +72,14 @@ interface ConnectLink {
   label: string
   href: string
   icon?: React.ComponentType<IconProps>
+  ariaLabel: string
 }
 
 const connectLinks: ConnectLink[] = [
-  { label: 'LinkedIn', href: 'https://www.linkedin.com/in/nshuti-maurice-2b7a202a0/', icon: LinkedinIcon },
-  { label: 'GitHub', href: 'https://github.com/mourice-dev', icon: GithubIcon },
-  { label: 'Twitter', href: 'https://x.com/Nshuti_Kope', icon: TwitterIcon },
-  { label: 'Instagram', href: 'https://www.instagram.com/nshutii__/', icon: InstagramIcon },
+  { label: 'LinkedIn', href: 'https://www.linkedin.com/in/nshuti-maurice-2b7a202a0/', icon: LinkedinIcon, ariaLabel: 'Follow Maurice Nshuti on LinkedIn' },
+  { label: 'GitHub', href: 'https://github.com/mourice-dev', icon: GithubIcon, ariaLabel: 'Visit Maurice Nshuti\'s GitHub profile' },
+  { label: 'Twitter', href: 'https://x.com/Nshuti_Kope', icon: TwitterIcon, ariaLabel: 'Follow Maurice Nshuti on Twitter' },
+  { label: 'Instagram', href: 'https://www.instagram.com/nshutii__/', icon: InstagramIcon, ariaLabel: 'Follow Maurice Nshuti on Instagram' },
 ]
 
 export default function Footer() {
@@ -142,6 +143,7 @@ export default function Footer() {
                     href={link.href}
                     target="_blank"
                     rel="noopener noreferrer"
+                    aria-label={link.ariaLabel}
                     className="text-white/50 text-sm font-sans hover:text-white transition-all duration-300 flex items-center gap-2 group"
                   >
                     {link.icon && (
